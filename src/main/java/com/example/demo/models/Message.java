@@ -18,4 +18,13 @@ public class Message {
     public String getText() {
         return text;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("id: " + this.getID() +" ");
+        sb.append("text :" + this.getText() +"\n");
+        return sb.toString();
+    }
 }

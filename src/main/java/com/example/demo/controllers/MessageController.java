@@ -13,7 +13,7 @@ public class MessageController {
     private final MessageService messageService;
 
     @Autowired
-    public MessageController(@Qualifier("localMessageService") MessageService messageService) {
+    public MessageController(@Qualifier("testMessageService") MessageService messageService) {
         this.messageService = messageService;
     }
 
@@ -24,25 +24,19 @@ public class MessageController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         else {
-            System.out.println(message.getID());
-            System.out.println(message.getText());
-            Integer id = messageService.saveMessage(message.getText());
-            return new ResponseEntity<>(id,HttpStatus.OK);
+            Integer id = messageService.saveMessage(message);
+            return ResponseEntity.ok(new Message(id,""));
         }
-
     }
 
     @GetMapping("get-message")
     public ResponseEntity getMessage(@RequestBody Message message)
     {
-        String result = messageService.getMessage(message.getID());
+        Message messageFromDAO = messageService.getMessage(message.getID());
 
-        System.out.println(message.getID());
-        System.out.println(message.getText());
-
-        if(result==null)
-            return new ResponseEntity<>("",HttpStatus.OK);
+        if(messageFromDAO==null)
+            return ResponseEntity.badRequest().body("");
         else
-            return new ResponseEntity(result, HttpStatus.OK);
+            return ResponseEntity.ok(new Message(0,messageFromDAO.getText()));
     }
 }
