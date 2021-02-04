@@ -5,4 +5,5 @@ import com.example.demo.models.Message;
 public interface MessageService {
     Integer saveMessage(Message message);
     Message getMessage(Integer id);
+    String getValueSetting();
 }

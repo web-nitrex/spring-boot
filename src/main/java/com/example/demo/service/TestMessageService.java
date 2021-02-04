@@ -3,19 +3,26 @@ package com.example.demo.service;
 import com.example.demo.dao.MessageDAO;
 import com.example.demo.models.Message;
 import com.example.demo.util.JsonMessageWriter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-@Service("testMessageService")
+@Profile("test")
+@Service
 public class TestMessageService implements MessageService{
 
     private final MessageDAO messageDAO;
 
     private final JsonMessageWriter jsonWriter;
+
+    @Value("${test.my.value}")
+    private String valueSettings;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestMessageService.class);
 
@@ -44,5 +51,10 @@ public class TestMessageService implements MessageService{
     @Override
     public Message getMessage(Integer id) {
         return messageDAO.getMessage(id);
+    }
+
+    @Override
+    public String getValueSetting() {
+        return valueSettings;
     }
 }
