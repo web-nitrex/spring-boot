@@ -2,9 +2,13 @@ package com.example.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Message {
-    private final int ID;
-    private final String text;
+import java.io.Serializable;
+
+public class Message implements Serializable {
+    private  int ID;
+    private  String text;
+
+    public static final long SerialVersionUID = 1L;
 
     public Message(@JsonProperty("ID") int ID,@JsonProperty("text") String text) {
         this.ID = ID;
@@ -17,6 +21,14 @@ public class Message {
 
     public String getText() {
         return text;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
