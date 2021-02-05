@@ -1,10 +1,10 @@
 [ {
-  "text" : "my test7",
-  "id" : 1
+  "id" : 1,
+  "text" : "message 1"
 }, {
-  "text" : "my test10",
-  "id" : 2
+  "id" : 2,
+  "text" : "message 2"
 }, {
-  "text" : "flkgjfdlkjglskdfg",
-  "id" : 3
+  "id" : 3,
+  "text" : "message 3"
 } ]

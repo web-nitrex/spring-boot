@@ -5,18 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    private  int ID;
+    private  int id;
     private  String text;
 
     public static final long SerialVersionUID = 1L;
 
-    public Message(@JsonProperty("ID") int ID,@JsonProperty("text") String text) {
-        this.ID = ID;
+    public Message(int id,String text) {
+        this.id = id;
         this.text = text;
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public String getText() {
@@ -24,7 +24,7 @@ public class Message implements Serializable {
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.id = id;
     }
 
     public void setText(String text) {

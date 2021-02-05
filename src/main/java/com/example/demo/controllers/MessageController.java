@@ -23,7 +23,7 @@ public class MessageController {
     public ResponseEntity saveMessage(@RequestBody Message message)
     {
         if(message.getText().equals("")) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body("");
         }
         else {
             Integer id = messageService.saveMessage(message);
@@ -44,6 +44,6 @@ public class MessageController {
 
     @GetMapping(value = "/get-setting")
     public Setting getSetting(){
-            return new Setting(messageService.getValueSetting());
+        return new Setting(messageService.getValueSetting());
     }
 }
